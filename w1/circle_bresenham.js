@@ -5,12 +5,11 @@ function setup()
     let ypos = windowHeight * 0.8 / 2;
     createCanvas(windowWidth * 0.8, windowHeight * 0.8);
     
-    //drawCircle(xpos, ypos, r);
-    drawSpiral(xpos, ypos, 20, 5);
+    drawCircle(xpos, ypos, r);
+    //drawSpiral(xpos, ypos, 20, 5);
 }
 
-function draw()
-{
+function draw() {
 }
 
 function drawCircle(xpos, ypos, r)
