@@ -15,59 +15,61 @@ function draw() {
     rotateY(angleY);
     rotateZ(angleZ);
     
-    //drawBox(100);
-    drawTorus(100, 50);
+    drawBox(100);
+    //drawTorus(100, 50);
 }
 
 function drawBox(size) {
+    size /= 2;
     // Draw a box shape
     beginShape();
     fill(255);
     stroke(0);
     strokeWeight(1);
+
     // Front face
-    vertex(-size / 2, -size / 2, size / 2);
-    vertex(size / 2, -size / 2, size / 2);
-    vertex(size / 2, size / 2, size / 2);
-    vertex(-size / 2, size / 2, size / 2);
+    vertex(-size, -size, size);
+    vertex(size, -size, size);
+    vertex(size, size, size);
+    vertex(-size, size, size);
     endShape(CLOSE);
 
     // Back face
     beginShape();
-    vertex(-size / 2, -size / 2, -size / 2);
-    vertex(size / 2, -size / 2, -size / 2);
-    vertex(size / 2, size / 2, -size / 2);
-    vertex(-size / 2, size / 2, -size / 2);
+    vertex(-size, -size, -size);
+    vertex(size, -size, -size);
+    vertex(size, size, -size);
+    vertex(-size, size, -size);
     endShape(CLOSE);
 
     // Connect front and back faces
     beginShape();
-    vertex(-size / 2, -size / 2, size / 2);
-    vertex(-size / 2, -size / 2, -size / 2);
-    vertex(-size / 2, size / 2, -size / 2);
-    vertex(-size / 2, size / 2, size / 2);
+    vertex(-size, -size, size);
+    vertex(-size, -size, -size);
+    vertex(-size, size, -size);
+    vertex(-size, size, size);
     endShape(CLOSE);
 
     beginShape();
-    vertex(size / 2, -size / 2, size / 2);
-    vertex(size / 2, -size / 2, -size / 2);
-    vertex(size / 2, size / 2, -size / 2);
-    vertex(size / 2, size / 2, size / 2);
+    vertex(size, -size, size);
+    vertex(size, -size, -size);
+    vertex(size, size, -size);
+    vertex(size, size, size);
     endShape(CLOSE);
 
     // Top and bottom faces
     beginShape();
-    vertex(-size / 2, -size / 2, size / 2);
-    vertex(size / 2, -size / 2, size / 2);
-    vertex(size / 2, -size / 2, -size / 2);
-    vertex(-size / 2, -size / 2, -size / 2);
+    vertex(-size, -size, size);
+    vertex(size, -size, size);
+    vertex(size, -size, -size);
+    vertex(-size, -size, -size);
     endShape(CLOSE);
 
     beginShape();
-    vertex(-size / 2, size / 2, size / 2);
-    vertex(size / 2, size / 2, size / 2);
-    vertex(size / 2, size / 2, -size / 2);
-    vertex(-size / 2, size / 2, -size / 2);
+    vertex(-size, size, size);
+    vertex(size, size, size);
+    vertex(size, size, -size);
+    vertex(-size, size, -size);
     endShape(CLOSE);
 }
 
