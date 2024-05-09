@@ -15,6 +15,10 @@ function draw() {
 
     orbitControl();
 
+    angleX += 0.01;
+    angleY += 0.01;
+    angleZ += 0.01;
+
     rotateX(angleX);
     rotateY(angleY);
     rotateZ(angleZ);
