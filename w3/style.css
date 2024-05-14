@@ -1,0 +1,47 @@
+:root {
+    --green:#12e566;
+    --pink: #ff00ff;
+    --cyan: #00e4f4;
+    --violet: #6a2dce;
+}
+
+body {
+    background-color: black;
+    font-family: "Monomaniac One", sans-serif;
+    font-weight: 400;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    /*font-family: "DotGothic16", sans-serif;*/
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -10px;
+    writing-mode: vertical-rl;
+    text-wrap: nowrap;
+
+    letter-spacing: -0.2em;
+}
+
+.dot {
+    margin-top: -0.5em;
+}
+
+span.initial {
+    color: white;
+}
+
+span.transition {
+    color: var(--green);
+    transition: color 1s cubic-bezier(0, .58, .41, .67);
+}
+
+.fade {
+    color: transparent;
+    transition: color 5s cubic-bezier(0, .58, .41, .67) 5s;
+}

@@ -1,4 +1,4 @@
-let generatedText = "";
+let generatedSentences = [];
 
 let markovChain = {};
 
@@ -20,27 +20,32 @@ function feedText(text) {
             markovChain[currentWord] = [nextWord];
         }
     }
+
+    console.log(markovChain);
 }
 
-function generateText(startWord, length) {
+function generateSentences(startWord, num) {
+    let sentences = [];
     let result = startWord + " ";
     let currentWord = startWord;
 
-    for (let i = 0; i < length; i++) {
-        if (markovChain[currentWord]) {
-            let nextWord = getRandomElement(markovChain[currentWord]);
-            result += nextWord + " ";
-            currentWord = nextWord;
-        } else {
-            break;
-        }
+    for (let i = 0; i < num; i++) {
+        do {
+            if (markovChain[currentWord]) {
+                let nextWord = getRandomElement(markovChain[currentWord]);
+                result += nextWord + " ";
+                currentWord = nextWord;
+            } else {
+                console.log("No word found for " + currentWord);
+                break;
+            }
+        } while (!currentWord.includes("."));
+        //console.log(result);
+        result = toHiragana(result);
+        sentences.push(result);
+        result = "";
     }
-
-    console.log(result);
-
-    result = toHiragana(result);
-
-    return result;
+    return sentences;
 }
 
 function toHiragana(text) {
@@ -238,6 +243,11 @@ function toHiragana(text) {
     text = text.replace(/pe/g, "ぺ");
     text = text.replace(/po/g, "ぽ");
 
+    text = text.replace(/fa/g, "ふぁ");
+    text = text.replace(/fi/g, "ふぃ");
+    text = text.replace(/fe/g, "ふぇ");
+    text = text.replace(/fo/g, "ふぉ");
+
     text = text.replace(/a/g, "あ");
     text = text.replace(/i/g, "い");
     text = text.replace(/u/g, "う");
@@ -253,33 +263,47 @@ function toHiragana(text) {
     return text;
 }
 
+function makeLine(text) {
+    let characters = text.split('');
+    let p = createP();
+    let index = 0;
+
+    p.elt.style.left = Math.floor(Math.random() * (window.innerWidth - p.elt.offsetWidth))-window.innerWidth/20 + 'px';
+
+    let interval = setInterval(() => {
+        if (index < characters.length) {
+            let span = document.createElement('span');
+            span.textContent = characters[index];
+            span.classList.add('initial');
+            if (characters[index] == "。" || characters[index] == "、") {
+                span.classList.add('dot');
+            }
+            p.elt.appendChild(span);
+            setTimeout(() => {
+                span.classList.add('transition');
+                setTimeout(() => {
+                    span.style.color = 'black';
+                }, 2000);
+            }, 100);
+            index++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 100);
+}
+
 function setup() {
 
-    let inputText = `
-    Doitsu Taishikan ha Nihon ni arimasu. Soko ni ha gaikokujin no gakusei mo imasu. Watashi ha Toukyou Denki no bengoshi desu. Watashi no namae ha Yamamoto desu. Watashi ha Doitsu kara kimashita. Watashi ha Toukyou de shigoto shite imasu. Bengoshi no hataraki ha totemo isogashii desu.
+    let inputText = `Doitsu Taishikan ha Nihon ni arimasu. Soko ni ha gaikokujin no gakusei mo imasu. Watashi ha Toukyou Denki no bengoshi desu. Watashi no namae ha Yamamoto desu. Watashi ha Doitsu kara kimashita. Watashi ha Toukyou de shigoto shite imasu. Bengoshi no hataraki ha totemo isogashii desu. Nihongo no benkyou ha muzukashii kedo, tanoshii desu. Watashi no tanjoubi ha Rokugatsu Juukyuu-nichi desu. Nihon de shigoto o hajimeta kara, Nihon-go ga jouzu ni naritai desu. Getsuyoubi kara kin'yuu no kaigi ga arimasu. Watashi ha kaigi no junbi o shimasu. Oosaka e no shinkansen ni noru koto ni narimashita. Watashi no tanoshii hobi ha gorufu desu. Getsuyoubi no yuugata ni takushiiya e ikimashita. Watashi no ie ha Toukyou ni arimasu. Ie no chikaku ni kouen ga arimasu. Natsu niwa koko ni sunde imasu. Kaeru toki ni, yoku depaato ni iku koto ga arimasu. Watashi no ie no mae ni ha kouban ga arimasu. Watashi no chichi ha ginkou no kaishain desu. Chichi ha totemo isogashii hito desu. Ashita ha chichi no tanjoubi desu. Watashi ha chichi ni purezento o agemasu. Chichi ha Igirisu-jin desu kara, kurisumasu ni ie ni kaerimasu. Watashi no haha ha koukaisha no byouin de hataraki o shite imasu. Haha no tanoshii toki ha shuumatsu desu. Kaisha no byouin no chikaku ni kouen ga arimasu. Haha ha eiga no fan desu. Watashi no tomodachi ha Nihon-jin desu. Tomodachi ha gakkou no sensei desu. Watashi no senpai ha gakusei desu. Senpai ha Toukyou Daigaku ni imasu. Senpai ha Nihongo ga jouzu desu. Senpai ha eiga ga suki desu. Watashi no kanojo ha ookina gakkou de benkyou shite imasu. Watashi no musume ha gakkou ni iku you ni nattara, totemo ureshii desu. Watashi no shigoto ha ookina kaisha de hataraki o shite imasu. Shigoto ha totemo muzukashii desu. Watashi no kaimono ha yoku depaato ni iku koto desu. Kaimono no toki ni, yoku tabemono o kaimasu. Kaimono no ato ni ha yoku uchi de yasumimasu. Watashi no ie ni ha neko ga imasu. Neko ha totemo kawaii desu. Neko ha yoku nemasu. Watashi ha neko ga daisuki desu. Watashi no ie ni ha inu mo imasu. Inu ha totemo genki desu. Inu ga iru toki ni, totemo ureshii desu.`;
 
-Nihongo no benkyou ha muzukashii kedo, tanoshii desu. Watashi no tanjoubi ha Rokugatsu Juukyuu-nichi desu. Nihon de shigoto o hajimeta kara, Nihon-go ga jouzu ni naritai desu.
-
-Getsuyoubi kara kin'yuu no kaigi ga arimasu. Watashi ha kaigi no junbi o shimasu. Oosaka e no shinkansen ni noru koto ni narimashita. Watashi no tanoshii hobi ha gorufu desu. Getsuyoubi no yuugata ni takushiiya e ikimashita.
-
-Watashi no ie ha Toukyou ni arimasu. Ie no chikaku ni kouen ga arimasu. Natsu niwa koko ni sunde imasu. Kaeru toki ni, yoku depaato ni iku koto ga arimasu. Watashi no ie no mae ni ha kouban ga arimasu.
-
-Watashi no chichi ha ginkou no kaishain desu. Chichi ha totemo isogashii hito desu. Ashita ha chichi no tanjoubi desu. Watashi ha chichi ni purezento o agemasu. Chichi ha Igirisu-jin desu kara, kurisumasu ni ie ni kaerimasu.
-
-Watashi no haha ha koukaisha no byouin de hataraki o shite imasu. Haha no tanoshii toki ha shuumatsu desu. Kaisha no byouin no chikaku ni kouen ga arimasu. Haha ha eiga no fan desu. Watashi no tomodachi ha Nihon-jin desu. Tomodachi ha gakkou no sensei desu.
-
-Watashi no senpai ha gakusei desu. Senpai ha Toukyou Daigaku ni imasu. Senpai ha Nihongo ga jouzu desu. Senpai ha eiga ga suki desu. Watashi no kanojo ha ookina gakkou de benkyou shite imasu. Watashi no musume ha gakkou ni iku you ni nattara, totemo ureshii desu.
-
-Watashi no shigoto ha ookina kaisha de hataraki o shite imasu. Shigoto ha totemo muzukashii desu. Watashi no kaimono ha yoku depaato ni iku koto desu. Kaimono no toki ni, yoku tabemono o kaimasu. Kaimono no ato ni ha yoku uchi de yasumimasu. Watashi no ie ni ha neko ga imasu.
-
-Neko ha totemo kawaii desu. Neko ha yoku nemasu. Watashi ha neko ga daisuki desu. Watashi no ie ni ha inu mo imasu. Inu ha totemo genki desu. Inu ga iru toki ni, totemo ureshii desu.
-    `;
-    
     feedText(inputText);
 
-    generatedText = generateText("Watashi", 100);
-
-    createP(generatedText);
+    generatedSentences = generateSentences("Watashi", 70);
+    generatedSentences.forEach(sentence => {
+        setTimeout(() => {
+            makeLine(sentence);
+        }, Math.random() * 10000);
+    });
 }
 
 // p5.js draw function (not necessarily used for text display, but useful for animations)
