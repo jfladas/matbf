@@ -38,7 +38,7 @@ span.initial {
 }
 
 span.transition {
-    color: var(--green);
+    color: var(--pink);
     transition: color 1s cubic-bezier(0, .58, .41, .67);
 }
 

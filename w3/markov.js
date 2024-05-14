@@ -268,7 +268,7 @@ function makeLine(text) {
     let p = createP();
     let index = 0;
 
-    p.elt.style.left = Math.floor(Math.random() * (window.innerWidth - p.elt.offsetWidth))-window.innerWidth/20 + 'px';
+    p.elt.style.left = Math.random() * 110 - 5 + 'vw';
 
     let interval = setInterval(() => {
         if (index < characters.length) {
@@ -294,15 +294,16 @@ function makeLine(text) {
 
 function setup() {
 
-    let inputText = `Doitsu Taishikan ha Nihon ni arimasu. Soko ni ha gaikokujin no gakusei mo imasu. Watashi ha Toukyou Denki no bengoshi desu. Watashi no namae ha Yamamoto desu. Watashi ha Doitsu kara kimashita. Watashi ha Toukyou de shigoto shite imasu. Bengoshi no hataraki ha totemo isogashii desu. Nihongo no benkyou ha muzukashii kedo, tanoshii desu. Watashi no tanjoubi ha Rokugatsu Juukyuu-nichi desu. Nihon de shigoto o hajimeta kara, Nihon-go ga jouzu ni naritai desu. Getsuyoubi kara kin'yuu no kaigi ga arimasu. Watashi ha kaigi no junbi o shimasu. Oosaka e no shinkansen ni noru koto ni narimashita. Watashi no tanoshii hobi ha gorufu desu. Getsuyoubi no yuugata ni takushiiya e ikimashita. Watashi no ie ha Toukyou ni arimasu. Ie no chikaku ni kouen ga arimasu. Natsu niwa koko ni sunde imasu. Kaeru toki ni, yoku depaato ni iku koto ga arimasu. Watashi no ie no mae ni ha kouban ga arimasu. Watashi no chichi ha ginkou no kaishain desu. Chichi ha totemo isogashii hito desu. Ashita ha chichi no tanjoubi desu. Watashi ha chichi ni purezento o agemasu. Chichi ha Igirisu-jin desu kara, kurisumasu ni ie ni kaerimasu. Watashi no haha ha koukaisha no byouin de hataraki o shite imasu. Haha no tanoshii toki ha shuumatsu desu. Kaisha no byouin no chikaku ni kouen ga arimasu. Haha ha eiga no fan desu. Watashi no tomodachi ha Nihon-jin desu. Tomodachi ha gakkou no sensei desu. Watashi no senpai ha gakusei desu. Senpai ha Toukyou Daigaku ni imasu. Senpai ha Nihongo ga jouzu desu. Senpai ha eiga ga suki desu. Watashi no kanojo ha ookina gakkou de benkyou shite imasu. Watashi no musume ha gakkou ni iku you ni nattara, totemo ureshii desu. Watashi no shigoto ha ookina kaisha de hataraki o shite imasu. Shigoto ha totemo muzukashii desu. Watashi no kaimono ha yoku depaato ni iku koto desu. Kaimono no toki ni, yoku tabemono o kaimasu. Kaimono no ato ni ha yoku uchi de yasumimasu. Watashi no ie ni ha neko ga imasu. Neko ha totemo kawaii desu. Neko ha yoku nemasu. Watashi ha neko ga daisuki desu. Watashi no ie ni ha inu mo imasu. Inu ha totemo genki desu. Inu ga iru toki ni, totemo ureshii desu.`;
+    let factor = Math.floor(window.innerWidth / 10);
 
+    let inputText = `Doitsu Taishikan ha Nihon ni arimasu. Soko ni ha gaikokujin no gakusei mo imasu. Watashi ha Toukyou Denki no bengoshi desu. Watashi no namae ha Yamamoto desu. Watashi ha Doitsu kara kimashita. Watashi ha Toukyou de shigoto shite imasu. Bengoshi no hataraki ha totemo isogashii desu. Nihongo no benkyou ha muzukashii kedo, tanoshii desu. Watashi no tanjoubi ha Rokugatsu Juukyuu-nichi desu. Nihon de shigoto o hajimeta kara, Nihon-go ga jouzu ni naritai desu. Getsuyoubi kara kin'yuu no kaigi ga arimasu. Watashi ha kaigi no junbi o shimasu. Oosaka e no shinkansen ni noru koto ni narimashita. Watashi no tanoshii hobi ha gorufu desu. Getsuyoubi no yuugata ni takushiiya e ikimashita. Watashi no ie ha Toukyou ni arimasu. Ie no chikaku ni kouen ga arimasu. Natsu niwa koko ni sunde imasu. Kaeru toki ni, yoku depaato ni iku koto ga arimasu. Watashi no ie no mae ni ha kouban ga arimasu. Watashi no chichi ha ginkou no kaishain desu. Chichi ha totemo isogashii hito desu. Ashita ha chichi no tanjoubi desu. Watashi ha chichi ni purezento o agemasu. Chichi ha Igirisu-jin desu kara, kurisumasu ni ie ni kaerimasu. Watashi no haha ha koukaisha no byouin de hataraki o shite imasu. Haha no tanoshii toki ha shuumatsu desu. Kaisha no byouin no chikaku ni kouen ga arimasu. Haha ha eiga no fan desu. Watashi no tomodachi ha Nihon-jin desu. Tomodachi ha gakkou no sensei desu. Watashi no senpai ha gakusei desu. Senpai ha Toukyou Daigaku ni imasu. Senpai ha Nihongo ga jouzu desu. Senpai ha eiga ga suki desu. Watashi no kanojo ha ookina gakkou de benkyou shite imasu. Watashi no musume ha gakkou ni iku you ni nattara, totemo ureshii desu. Watashi no shigoto ha ookina kaisha de hataraki o shite imasu. Shigoto ha totemo muzukashii desu. Watashi no kaimono ha yoku depaato ni iku koto desu. Kaimono no toki ni, yoku tabemono o kaimasu. Kaimono no ato ni ha yoku uchi de yasumimasu. Watashi no ie ni ha neko ga imasu. Neko ha totemo kawaii desu. Neko ha yoku nemasu. Watashi ha neko ga daisuki desu. Watashi no ie ni ha inu mo imasu. Inu ha totemo genki desu. Inu ga iru toki ni, totemo ureshii desu.`;
     feedText(inputText);
 
-    generatedSentences = generateSentences("Watashi", 70);
+    generatedSentences = generateSentences("Watashi", factor);
     generatedSentences.forEach(sentence => {
         setTimeout(() => {
             makeLine(sentence);
-        }, Math.random() * 10000);
+        }, Math.random() * factor * 100);
     });
 }
 
