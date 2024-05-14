@@ -40,7 +40,7 @@ function generateSentences(startWord, num) {
                 break;
             }
         } while (!currentWord.includes("."));
-        //console.log(result);
+        console.log(result);
         result = toHiragana(result);
         sentences.push(result);
         result = "";
