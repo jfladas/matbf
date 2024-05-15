@@ -297,18 +297,14 @@ function setup() {
     let factor = Math.floor(window.innerWidth / 10);
 
     let inputText = `Doitsu Taishikan ha Nihon ni arimasu. Soko ni ha gaikokujin no gakusei mo imasu. Watashi ha Toukyou Denki no bengoshi desu. Watashi no namae ha Yamamoto desu. Watashi ha Doitsu kara kimashita. Watashi ha Toukyou de shigoto shite imasu. Bengoshi no hataraki ha totemo isogashii desu. Nihongo no benkyou ha muzukashii kedo, tanoshii desu. Watashi no tanjoubi ha Rokugatsu Juukyuu-nichi desu. Nihon de shigoto o hajimeta kara, Nihon-go ga jouzu ni naritai desu. Getsuyoubi kara kin'yuu no kaigi ga arimasu. Watashi ha kaigi no junbi o shimasu. Oosaka e no shinkansen ni noru koto ni narimashita. Watashi no tanoshii hobi ha gorufu desu. Getsuyoubi no yuugata ni takushiiya e ikimashita. Watashi no ie ha Toukyou ni arimasu. Ie no chikaku ni kouen ga arimasu. Natsu niwa koko ni sunde imasu. Kaeru toki ni, yoku depaato ni iku koto ga arimasu. Watashi no ie no mae ni ha kouban ga arimasu. Watashi no chichi ha ginkou no kaishain desu. Chichi ha totemo isogashii hito desu. Ashita ha chichi no tanjoubi desu. Watashi ha chichi ni purezento o agemasu. Chichi ha Igirisu-jin desu kara, kurisumasu ni ie ni kaerimasu. Watashi no haha ha koukaisha no byouin de hataraki o shite imasu. Haha no tanoshii toki ha shuumatsu desu. Kaisha no byouin no chikaku ni kouen ga arimasu. Haha ha eiga no fan desu. Watashi no tomodachi ha Nihon-jin desu. Tomodachi ha gakkou no sensei desu. Watashi no senpai ha gakusei desu. Senpai ha Toukyou Daigaku ni imasu. Senpai ha Nihongo ga jouzu desu. Senpai ha eiga ga suki desu. Watashi no kanojo ha ookina gakkou de benkyou shite imasu. Watashi no musume ha gakkou ni iku you ni nattara, totemo ureshii desu. Watashi no shigoto ha ookina kaisha de hataraki o shite imasu. Shigoto ha totemo muzukashii desu. Watashi no kaimono ha yoku depaato ni iku koto desu. Kaimono no toki ni, yoku tabemono o kaimasu. Kaimono no ato ni ha yoku uchi de yasumimasu. Watashi no ie ni ha neko ga imasu. Neko ha totemo kawaii desu. Neko ha yoku nemasu. Watashi ha neko ga daisuki desu. Watashi no ie ni ha inu mo imasu. Inu ha totemo genki desu. Inu ga iru toki ni, totemo ureshii desu.`;
+    //let inputText = `In den malerischen Hügeln des Schwarzwaldes liegt das kleine Dorf Hinterwald. Umgeben von dichten Wäldern und sanften Wiesen, ist es ein Ort der Ruhe und Erholung. Die Einwohner leben in Harmonie mit der Natur und pflegen alte Traditionen.Jeden Morgen erwacht das Dorf zum Klang der Kirchenglocken. Die Dorfbewohner gehen ihren täglichen Aufgaben nach: Die Bauern bringen ihre Kühe auf die Weide, die Bäcker bereiten frisches Brot zu, und die Kinder machen sich auf den Weg zur Schule. Im Sommer versammeln sich die Dorfbewohner auf dem Marktplatz, um das alljährliche Dorffest zu feiern. Es gibt Musik, Tanz und natürlich reichlich Essen und Trinken. Die Kinder tollen auf der Wiese herum, während die Erwachsenen sich unterhalten und das schöne Wetter genießen. Im Herbst färben sich die Blätter der Bäume golden und rot, und die Luft wird frisch und klar. Die Dorfbewohner sammeln fleißig Kastanien und Pilze im Wald und bereiten sich auf den Winter vor. Wenn der erste Schnee fällt, verwandelt sich Hinterwald in eine märchenhafte Winterlandschaft. Die Kinder bauen Schneemänner und rodeln den Hügel hinunter, während die Erwachsenen sich am warmen Kaminfeuer entspannen. Das Leben in Hinterwald mag einfach sein, aber es ist erfüllt von Liebe, Gemeinschaft und Verbundenheit mit der Natur. Es ist ein Ort, den man nie vergessen wird.`;
     feedText(inputText);
 
     generatedSentences = generateSentences("Watashi", factor);
+    //generatedSentences = generateSentences("Die", factor);
     generatedSentences.forEach(sentence => {
         setTimeout(() => {
             makeLine(sentence);
         }, Math.random() * factor * 100);
     });
-}
-
-// p5.js draw function (not necessarily used for text display, but useful for animations)
-function draw() {
-
-    // Additional code for animations or interactions could go here
 }

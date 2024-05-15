@@ -35,14 +35,16 @@ p {
 
 span.initial {
     color: white;
+    text-shadow: 0 0 10px white;
 }
 
 span.transition {
-    color: var(--pink);
-    transition: color 1s cubic-bezier(0, .58, .41, .67);
+    color: var(--green);
+    text-shadow: 0 0 10px transparent;
+    transition: all 1s cubic-bezier(0, .58, .41, .67);
 }
 
 .fade {
     color: transparent;
-    transition: color 5s cubic-bezier(0, .58, .41, .67) 5s;
+    transition: all 5s cubic-bezier(0, .58, .41, .67) 5s;
 }
