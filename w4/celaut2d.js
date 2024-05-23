@@ -10,17 +10,16 @@ let color2 = [191, 75, 43]; // Orange
 let color3 = [238, 214, 118]; // Yellow
 
 function setup() {
-    // let canvas = createCanvas(windowWidth, windowHeight);
-    // canvas.position(0, 0);
-    // cols = Math.floor(width / cellSize) + 1;
-    // rows = Math.floor(height / cellSize) + 1;
-    let canvas = createCanvas(800, 800);
-    let canvasX = (windowWidth - width) / 2;
-    let canvasY = (windowHeight - height) / 2;
-    canvas.position(canvasX, canvasY);
-
-    cols = width / cellSize;
-    rows = height / cellSize;
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.position(0, 0);
+    cols = Math.floor(width / cellSize) + 1;
+    rows = Math.floor(height / cellSize) + 1;
+    // let canvas = createCanvas(800, 800);
+    // let canvasX = (windowWidth - width) / 2;
+    // let canvasY = (windowHeight - height) / 2;
+    // canvas.position(canvasX, canvasY);
+    //cols = width / cellSize;
+    //rows = height / cellSize;
 
     grid = create2DArray(cols, rows);
     nextGrid = create2DArray(cols, rows);
@@ -28,16 +27,17 @@ function setup() {
     // Initialize grid with random pattern
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            let rndmState;
-            if (Math.floor(random(2)) === 0) {
-                rndmState = 0;
-            } else {
-                rndmState = Math.floor(random(4));
-            }
-            grid[i][j] = rndmState;
+            // let rndmState;
+            // if (Math.floor(random(2)) === 0) {
+            //     rndmState = 0;
+            // } else {
+            //     rndmState = Math.floor(random(4));
+            // }
+            // grid[i][j] = rndmState;
+            grid[i][j] = 0;
         }
     }
-    frameRate(10);
+    frameRate(12);
 }
 
 function create2DArray(cols, rows) {
@@ -75,6 +75,7 @@ function draw() {
     }
 
     generateNextGen();
+    checkInput();
 }
 
 function generateNextGen() {
@@ -126,6 +127,22 @@ function generateNextGen() {
     let temp = grid;
     grid = nextGrid;
     nextGrid = temp;
+}
+
+function checkInput() {
+    if (mouseIsPressed) {
+        let x = Math.floor(mouseX / cellSize);
+        let y = Math.floor(mouseY / cellSize);
+        if (x >= 0 && x < cols && y >= 0 && y < rows) {
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    let col = (x + i + cols) % cols;
+                    let row = (y + j + rows) % rows;
+                    grid[col][row] = Math.floor(random(4));
+                }
+            }
+        }
+    }
 }
 
 function countNeighbors(x, y) {
