@@ -4,10 +4,35 @@ let cellSize = 10;
 let grid;
 let nextGrid;
 
+
+//Palette 1
 let color0 = [12, 0, 15]; // Dark purple
 let color1 = [92, 20, 35]; // Dark red
 let color2 = [191, 75, 43]; // Orange
 let color3 = [238, 214, 118]; // Yellow
+
+/*
+//Palette 2
+let color0 = [40, 28, 100]; // Dark purple
+let color1 = [236, 43, 92]; // Pink
+let color2 = [252, 104, 64]; // Orange
+let color3 = [248, 197, 61]; // Yellow
+*/
+/*
+//Palette 3
+let color0 = [0, 10, 53]; // Dark purple
+let color1 = [184, 21, 144]; // Pink
+let color2 = [240, 92, 49]; // Orange
+let color3 = [241, 251, 196]; // Yellow
+*/
+/*
+//Palette 4
+let color0 = [1, 4, 79]; // Dark blue
+let color1 = [0, 111, 219]; // Blue
+let color2 = [237, 208, 9]; // Yellow
+let color3 = [252, 23, 65]; // Red
+*/
+
 
 function setup() {
     let canvas = createCanvas(windowWidth, windowHeight);
