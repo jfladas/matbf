@@ -4,8 +4,21 @@ let cellSize = 10;
 let grid;
 let nextGrid;
 
+let color0 = [12, 0, 15]; // Dark purple
+let color1 = [92, 20, 35]; // Dark red
+let color2 = [191, 75, 43]; // Orange
+let color3 = [238, 214, 118]; // Yellow
+
 function setup() {
-    createCanvas(800, 800);
+    // let canvas = createCanvas(windowWidth, windowHeight);
+    // canvas.position(0, 0);
+    // cols = Math.floor(width / cellSize) + 1;
+    // rows = Math.floor(height / cellSize) + 1;
+    let canvas = createCanvas(800, 800);
+    let canvasX = (windowWidth - width) / 2;
+    let canvasY = (windowHeight - height) / 2;
+    canvas.position(canvasX, canvasY);
+
     cols = width / cellSize;
     rows = height / cellSize;
 
@@ -15,10 +28,15 @@ function setup() {
     // Initialize grid with random pattern
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            grid[i][j] = floor(random(2));
+            let rndmState;
+            if (Math.floor(random(2)) === 0) {
+                rndmState = 0;
+            } else {
+                rndmState = Math.floor(random(4));
+            }
+            grid[i][j] = rndmState;
         }
     }
-
     frameRate(10);
 }
 
@@ -37,12 +55,21 @@ function draw() {
         for (let j = 0; j < rows; j++) {
             let x = i * cellSize;
             let y = j * cellSize;
-            if (grid[i][j] === 1) {
-                fill(0);
-            } else {
-                fill(255);
+            switch (grid[i][j]) {
+                case 0:
+                    fill(color0);
+                    break;
+                case 1:
+                    fill(color1);
+                    break;
+                case 2:
+                    fill(color2);
+                    break;
+                case 3:
+                    fill(color3);
+                    break;
             }
-            stroke(0);
+            noStroke();
             rect(x, y, cellSize, cellSize);
         }
     }
@@ -51,20 +78,49 @@ function draw() {
 }
 
 function generateNextGen() {
+    // for (let i = 0; i < cols; i++) {
+    //     for (let j = 0; j < rows; j++) {
+    //         let state = grid[i][j];
+    //         let neighbors = countNeighbors(grid, i, j);
+
+    //         if (neighbors > (3*state) && neighbors < (5*state)) {
+    //             if (state === 3) {
+    //                 nextGrid[i][j] = state; // Stay the same
+    //             } else {
+    //                 nextGrid[i][j] = state + 1; // Upgrade
+    //             }
+    //         } else if (neighbors < (1*state) || neighbors > (7*state)) {
+    //             if (state === 0) {
+    //                 nextGrid[i][j] = state; // Stay the same
+    //             } else {
+    //                 nextGrid[i][j] = state - 1; // Downgrade
+    //             }
+    //         } else {
+    //             nextGrid[i][j] = state; // Stay the same
+    //         }
+    //     }
+    // }
+
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
             let state = grid[i][j];
-            let neighbors = countNeighbors(grid, i, j);
-
-            if (state === 0 && neighbors === 3) {
-                nextGrid[i][j] = 1; // Birth
-            } else if (state === 1 && (neighbors < 2 || neighbors > 3)) {
+            let neighbors = countNeighbors(i, j);
+            if (neighbors === 3) {
+                if (state === 3) {
+                    nextGrid[i][j] = state; // Stay the same
+                } else {
+                    nextGrid[i][j] = state + 1; // Upgrade
+                }
+            } else if (neighbors < 2 || neighbors > 3) {
                 nextGrid[i][j] = 0; // Death
             } else {
-                nextGrid[i][j] = state; // Stays the same
+                nextGrid[i][j] = state; // Stay the same
             }
         }
     }
+
+    console.log(grid);
+
 
     // Swap grids
     let temp = grid;
@@ -72,15 +128,21 @@ function generateNextGen() {
     nextGrid = temp;
 }
 
-function countNeighbors(grid, x, y) {
+function countNeighbors(x, y) {
     let sum = 0;
     for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
             let col = (x + i + cols) % cols;
             let row = (y + j + rows) % rows;
-            sum += grid[col][row];
+            if (grid[col][row] !== 0) {
+                sum++;
+            }
+            //sum += grid[col][row];
         }
     }
-    sum -= grid[x][y];
+    if (grid[x][y] !== 0) {
+        sum--;
+    }
+    //sum -= grid[x][y];
     return sum;
 }
