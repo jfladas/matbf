@@ -4,35 +4,52 @@ let cellSize = 10;
 let grid;
 let nextGrid;
 
+let currentPalette = 0; // Start with palette 1 (index 0)
 
-//Palette 1
-let color0 = [12, 0, 15]; // Dark purple
-let color1 = [92, 20, 35]; // Dark red
-let color2 = [191, 75, 43]; // Orange
-let color3 = [238, 214, 118]; // Yellow
-
-/*
-//Palette 2
-let color0 = [40, 28, 100]; // Dark purple
-let color1 = [236, 43, 92]; // Pink
-let color2 = [252, 104, 64]; // Orange
-let color3 = [248, 197, 61]; // Yellow
-*/
-/*
-//Palette 3
-let color0 = [0, 10, 53]; // Dark purple
-let color1 = [184, 21, 144]; // Pink
-let color2 = [240, 92, 49]; // Orange
-let color3 = [241, 251, 196]; // Yellow
-*/
-/*
-//Palette 4
-let color0 = [1, 4, 79]; // Dark blue
-let color1 = [0, 111, 219]; // Blue
-let color2 = [237, 208, 9]; // Yellow
-let color3 = [252, 23, 65]; // Red
-*/
-
+function switchPalette(newPaletteIndex) {
+    if (newPaletteIndex >= 0) {
+        if (newPaletteIndex >= palettes.length) {
+            currentPalette = 0;
+        } else {
+            currentPalette = newPaletteIndex;
+        }
+    }
+}
+const palettes = [
+    [
+        // Palette 1
+        [12, 0, 15],  // Dark purple
+        [92, 20, 35],  // Dark red
+        [191, 75, 43], // Orange
+        [238, 214, 118], // Yellow
+    ],
+    [
+        // Palette 2
+        [40, 28, 100],  // Dark purple
+        [236, 43, 92],  // Pink
+        [252, 104, 64], // Orange
+        [248, 197, 61], // Yellow
+    ],
+    [
+        // Palette 3
+        [0, 10, 53],   // Dark purple
+        [184, 21, 144], // Pink
+        [240, 92, 49],  // Orange
+        [241, 251, 196], // Yellow
+    ],
+    // Palette 4
+    [
+        [1, 4, 79], // Dark blue
+        [0, 111, 219], // Blue
+        [237, 208, 9], // Yellow
+        [252, 23, 65], // Red
+    ]
+];
+function keyPressed() {
+    if (key === ' ') {
+        switchPalette(currentPalette + 1);
+    }
+}
 
 function setup() {
     let canvas = createCanvas(windowWidth, windowHeight);
@@ -82,16 +99,16 @@ function draw() {
             let y = j * cellSize;
             switch (grid[i][j]) {
                 case 0:
-                    fill(color0);
+                    fill(palettes[currentPalette][0]);
                     break;
                 case 1:
-                    fill(color1);
+                    fill(palettes[currentPalette][1]);
                     break;
                 case 2:
-                    fill(color2);
+                    fill(palettes[currentPalette][2]);
                     break;
                 case 3:
-                    fill(color3);
+                    fill(palettes[currentPalette][3]);
                     break;
             }
             noStroke();
@@ -144,9 +161,6 @@ function generateNextGen() {
             }
         }
     }
-
-    console.log(grid);
-
 
     // Swap grids
     let temp = grid;
