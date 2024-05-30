@@ -36,7 +36,7 @@ let colors = [
 
 
 function setup() {
-    let canvas = createCanvas(windowWidth * 1.1, windowHeight);
+    let canvas = createCanvas(windowWidth * 1.1, windowHeight * 1.1);
     canvas.position(-windowWidth * 0.05, 0);
     noStroke();
     
@@ -55,7 +55,7 @@ function draw() {
     for (let i = 0; i < colors.length; i++) {
         fill(colors[i]);
         // Draw interpolated points
-        drawInterpolatedPoints(values[i], (i / colors.length + 1) * 500, modes[mode]);
+        drawInterpolatedPoints(values[i], (i / colors.length + 1) * (height/2), modes[mode]);
     }
 }
 
@@ -72,7 +72,7 @@ function drawInterpolatedPoints(values, yOffset, interpolationFunc) {
         vertex((width / numPoints) * (values.length - 1) + width / numPoints / 2, yOffset - values[values.length - 1]);
     }
     vertex((width / numPoints) * (values.length - 1) + width / numPoints / 2, yOffset + height);
-    vertex(width / numPoints / 2, yOffset + 1000);
+    vertex(width / numPoints / 2, yOffset + height);
     endShape();
 }
 
