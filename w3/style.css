@@ -13,6 +13,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    user-select: none;
 
     /*font-family: "DotGothic16", sans-serif;*/
 }

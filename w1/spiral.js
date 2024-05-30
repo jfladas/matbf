@@ -1,8 +1,10 @@
 function setup() {
     let r = 200;
-    let xpos = windowWidth * 0.8 / 2;
-    let ypos = windowHeight * 0.8 / 2;
-    createCanvas(windowWidth * 0.8, windowHeight * 0.8);
+    let xpos = windowWidth  / 2;
+    let ypos = windowHeight / 2;
+
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.position(0, 0);
 
     //drawSpiral(xpos, ypos, 12, 6);
     drawSpiral(xpos, ypos, 20, 3);
@@ -24,7 +26,6 @@ function drawSpiral(xpos, ypos, growth, size) {
     drawCircle(x + xpos, y + ypos, r/3);
     r += growth;
     for (let i = 0; i <= size; i++) {
-        console.log(x + " " + y);
         //1/8
         while (y >= x) {
             let r0 = sqrt((x - 1) * (x - 1) + (y - 1) * (y - 1));

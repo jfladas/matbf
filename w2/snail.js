@@ -6,8 +6,8 @@ let numSides = 20;
 let vertices = [];
 
 function setup() {
-    createCanvas(400, 400, WEBGL);
-    
+    let canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+    canvas.position(0, 0);
 }
 
 function draw() {

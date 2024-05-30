@@ -1,47 +1,78 @@
+let values = [];
+let numPoints = 10;
+let resolution = 200;
+let modes = [noInterpolation, linearInterpolation, cosineInterpolation, perlinInterpolation, smoothstepInterpolation];
+let mode = 0;
+
 function setup() {
     let canvas = createCanvas(windowWidth, windowHeight);
     canvas.position(0, 0);
     stroke(0);
     fill(0);
+
+    // Generate random values
+    for (let i = 0; i < numPoints; i++) {
+        values.push(random(height / 2));
+    }
 }
 
 function draw() {
     noLoop();
     background(255);
 
-    // Generate random data points
-    const points = [];
-    for (let i = 0; i < 10; i++) {
-        points.push(createVector(i * width / 10, random(height)));
-    }
-    drawSmoothstepInterpolation(points);
-    
+    // Draw interpolated points
+    drawInterpolatedPoints(values, 800, modes[mode]);
 }
 
-function drawSmoothstepInterpolation(points) {
-    // Draw the line using smoothstep interpolation
+function drawPoints(points, yOffset) {
     beginShape();
     for (let i = 0; i < points.length; i++) {
-        const prev = points[i - 1] || points[0];
-        const next = points[i + 1] || points[points.length - 1];
-        const x = points[i].x;
-        const y = smoothstepInterpolation(prev.y, points[i].y, next.y, clamp(x / width, 0, 1));
-        curveVertex(x, y);
+        vertex((width / numPoints) * i, yOffset - points[i]);
     }
     endShape();
 }
-function smoothstepInterpolation(a, b, c, x) {
-    const t = smoothstep(0, 1, x);
-    return a * (1 - t) * (1 - t) + b * 2 * (1 - t) * t + c * t * t;
+
+function drawInterpolatedPoints(values, yOffset, interpolationFunc) {
+    beginShape();
+    for (let i = 0; i < values.length - 1; i++) {
+        for (let t = 0; t < resolution; t++) {
+            let x = (width / numPoints) * (i + t / resolution) + width / numPoints / 2;
+            let y = yOffset - interpolationFunc(values[i], values[i + 1], t / resolution);
+            vertex(x, y);
+        }
+    }
+    endShape();
 }
-function clamp(value, min, max) {
-    return Math.min(Math.max(value, min), max);
+
+// No Interpolation
+function noInterpolation(a, b, t) {
+    return a;
 }
-function smoothstep(edge0, edge1, x) {
-    const t = (x - edge0) / (edge1 - edge0);
-    return t * t * (3 - 2 * t);
+
+// Linear Interpolation
+function linearInterpolation(a, b, t) {
+    return a * (1 - t) + b * t;
+}
+
+// Cosine Interpolation
+function cosineInterpolation(a, b, t) {
+    let ft = t * PI;
+    let f = (1 - cos(ft)) * 0.5;
+    return a * (1 - f) + b * f;
+}
+
+// Perlin Interpolation
+function perlinInterpolation(a, b, t) {
+    return a * (1 - (6 * Math.pow(t, 5) - 15 * Math.pow(t, 4) + 10 * Math.pow(t, 3))) + b * (6 * Math.pow(t, 5) - 15 * Math.pow(t, 4) + 10 * Math.pow(t, 3));
+}
+
+// Smoothstep Interpolation
+function smoothstepInterpolation(a, b, t) {
+    t = t * t * (3 - 2 * t);
+    return a * (1 - t) + b * t;
 }
 
 function mouseClicked() {
+    mode = (mode + 1) % modes.length;
     redraw();
 }
