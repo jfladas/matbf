@@ -54,6 +54,11 @@ function keyPressed() {
 function setup() {
     let canvas = createCanvas(windowWidth, windowHeight);
     canvas.position(0, 0);
+    if (windowWidth > windowHeight) {
+        cellSize = Math.floor(windowWidth / 120) + 1;
+    } else {
+        cellSize = Math.floor(windowHeight / 80) + 1;
+    };
     cols = Math.floor(width / cellSize) + 1;
     rows = Math.floor(height / cellSize) + 1;
     // let canvas = createCanvas(800, 800);
@@ -80,6 +85,7 @@ function setup() {
         }
     }
     frameRate(12);
+    noStroke();
 }
 
 function create2DArray(cols, rows) {
@@ -111,7 +117,6 @@ function draw() {
                     fill(palettes[currentPalette][3]);
                     break;
             }
-            noStroke();
             rect(x, y, cellSize, cellSize);
         }
     }
