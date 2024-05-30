@@ -43,6 +43,8 @@ function setup() {
     background(0)
 
     generateFractalNoiseValues();
+
+    frameRate(12);
 }
 
 function draw() {
@@ -69,7 +71,7 @@ function drawInterpolatedPoints(values, yOffset, interpolationFunc) {
     if (interpolationFunc == noInterpolation) {
         vertex((width / numPoints) * (values.length - 1) + width / numPoints / 2, yOffset - values[values.length - 1]);
     }
-    vertex((width / numPoints) * (values.length - 1) + width / numPoints / 2, yOffset + 1000);
+    vertex((width / numPoints) * (values.length - 1) + width / numPoints / 2, yOffset + height);
     vertex(width / numPoints / 2, yOffset + 1000);
     endShape();
 }
