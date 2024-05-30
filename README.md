@@ -11,3 +11,6 @@
 
 ## [W4 | Life](https://jfladas.github.io/matbf/w4/)
 *Interactive Conway's Game of Life with more States/Colors*
+
+## [W5 | Mountains](https://jfladas.github.io/matbf/w5/)
+*Layered mountain range made with 2D Fractal Noise and Smoothstep-Interpolation*
