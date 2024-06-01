@@ -85,18 +85,18 @@ function setup() {
         '#235347',
         '#8eb69b',
         '#daf1de'
-    ]; // Different colors for trees
+    ];
 
-    nTrees = 4; // Number of trees per layer
+    nTrees = 4;
     let initialStrokeWeight = 2.5;
 
     for (let layer = 0; layer < colors.length; layer++) {
-        let strokeWeightValue = initialStrokeWeight - layer * 0.5; // Decrease stroke weight for each layer
-        if (strokeWeightValue < 0.5) strokeWeightValue = 0.5; // Ensure stroke weight doesn't go below 1
+        let strokeWeightValue = initialStrokeWeight - layer * 0.5;
+        if (strokeWeightValue < 0.5) strokeWeightValue = 0.5;
 
         for (let i = 0; i < nTrees; i++) {
-            sentence = generateSentence(Math.floor(random(0, ruleSets.length)), 5); // Generate sentence for 5 generations
-            len = 100 * Math.pow(0.6, 5); // Adjust the length accordingly
+            sentence = generateSentence(Math.floor(random(0, ruleSets.length)), 5);
+            len = 100 * Math.pow(0.6, 5);
             drawTree(sentence, random(-width / 2, width / 2), colors[layer], strokeWeightValue);
         }
     }
