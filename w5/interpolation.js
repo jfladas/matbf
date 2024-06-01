@@ -6,15 +6,12 @@ let mode = 2;
 let persistence = 0.5;
 
 let tints = [
-    [0.6, 1.2, 1.6], // Blue
+    [1, 1, 1], // None
+    [1, 0.8, 1.2], // Purple
+    [1.5, 1, 1], // Pink
+    [1.2, 1.2, 0.8], // Orange
     [1.2, 1, 0.5], // Yellow
-    [1, 1, 1], // Gray    
-    [1.5, 0.5, 1], // Pink
-    [1, 1, 1.5], // Purple
-    [1, 1.5, 1], // Green
-    [1.5, 1, 1], // Red
-    [1.5, 1.5, 1], // Orange
-    [1, 1.5, 1.5], // Teal
+    [0.8, 1.2, 1], // Teal
 ];
 let tint = tints[0];
 
@@ -106,6 +103,8 @@ function smoothstepInterpolation(a, b, t) {
 
 function mouseClicked() {
     tint = tints[Math.floor(random(tints.length))];
+
+    console.log(tint);
 
     colors = [
         [30, 0, 50],
