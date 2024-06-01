@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "MingLiU";
+    src: url("mingliu.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: "MingLiU";
+    color: white;
+}
+
+body {
+    background-color: black;
+    margin: 100px;
+}
+h1 {
+    font-size: 50px;
+}
+h2 {
+    margin-top: 50px;
+}
+
+a {
+    color: pink;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+}
+a:visited {
+    color: purple;
+}
+a:active {
+    color: purple;
+}
