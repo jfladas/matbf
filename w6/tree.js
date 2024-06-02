@@ -1,5 +1,5 @@
 let axiom = "F";
-let len = 100;
+let len = 250;
 let angle;
 let nTrees;
 
@@ -9,13 +9,13 @@ let ruleSets = [
         { predecessor: "F", successor: "F+[+F-F]-[-F+F]F" }
     ],
     [
-        { predecessor: "F", successor: "FF-[-F+F]+[+F-F]" }
+        { predecessor: "F", successor: "F[-F+F][+F-F]" }
     ],
     [
         { predecessor: "F", successor: "F[+F]F[-F][F]" }
     ],
     [
-        { predecessor: "F", successor: "F[+F]F[-F]F" }
+        { predecessor: "F", successor: "F[+FF][-F]" }
     ],
     [
         { predecessor: "F", successor: "F[+F[-F[+F]]]" }
@@ -83,7 +83,7 @@ function setup() {
         '#0b2b26',
         '#163832',
         '#235347',
-        '#8eb69b',
+        '#72957d',
         '#daf1de'
     ];
 
@@ -96,7 +96,7 @@ function setup() {
 
         for (let i = 0; i < nTrees; i++) {
             sentence = generateSentence(Math.floor(random(0, ruleSets.length)), 5);
-            len = 100 * Math.pow(0.6, 5);
+            len = 150 * Math.pow(0.6, 5);
             drawTree(sentence, random(-width / 2, width / 2), colors[layer], strokeWeightValue);
         }
     }
