@@ -1,8 +1,6 @@
 @font-face {
     font-family: "MingLiU";
     src: url("mingliu.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
 }
 
 * {
@@ -19,17 +17,31 @@ h1 {
 }
 h2 {
     margin-top: 50px;
+    font-weight: 300;
+}
+
+span {
+    color: rgba(255, 255, 255, 0.3);
+    display: none;
 }
 
 a {
-    .link {
+    h2 {
         color: pink;
     }
     text-decoration: none;
+    text-wrap: nowrap;
 }
 a:hover {
-    .link {
+    h2 {
         color: rgb(255, 123, 145);
+        font-weight: bold;
+    }
+    span {
+        display: initial;
+    }
+    em {
+        font-style: normal;
     }
 }
 a:visited, a:active {
