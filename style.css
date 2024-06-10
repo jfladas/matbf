@@ -49,3 +49,25 @@ a:visited, a:active {
         color: rgba(232, 125, 180, 0.833);
     }
 }
+
+@media (max-width: 600px) {
+    body {
+        margin: 40px 20px;
+        max-width: calc(100vw - 40px);
+    }
+    h1 {
+        font-size: 30px;
+        max-width: calc(100vw - 40px);
+    }
+    h2 {
+        margin-top: 30px;
+    }
+    p {
+        font-size: 15px;
+        text-wrap: wrap;
+        line-height: 1.5;
+    }
+    span {
+        display: initial;
+    }
+}
