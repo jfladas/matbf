@@ -1,6 +1,6 @@
 # Beautiful Mathematics
 *Module MATBF DI FS24*
-## [➥ Main Page](https://jfladas.github.io/matbf/)
+## [↳ Main Page](https://jfladas.github.io/matbf/)
 
 ### [W1 | Spiral](https://jfladas.github.io/matbf/w1/)
 *Spiral of circles increasing in size made by implementing Bresenham Midpoint Circle Algorithm*
