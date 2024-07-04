@@ -55,7 +55,6 @@ function draw() {
         }
         if (radius <= minRadius) {
             breatheIn = true;
-            opacityDirection = 1;
         }
     }
 
@@ -69,10 +68,20 @@ function draw() {
 
 function drawBreathingCircle(radius, color, opacity) {
     let noiseMax = 5;
-    let points = 100;
+    let points = 50; // Reduced the number of points for performance
     if (radius < 0) {
         return;
     }
+
+    // Create radial gradient for the circle with opacity
+    let circleGradient = drawingContext.createRadialGradient(
+        width / 2, height / 2, 0,
+        width / 2, height / 2, radius
+    );
+    let rgbaColor = color + hex(floor(opacity), 2);
+    circleGradient.addColorStop(0, blue + '00');
+    circleGradient.addColorStop(1, rgbaColor);
+    drawingContext.fillStyle = circleGradient;
 
     // draw breathing circle with noise
     noStroke();
@@ -87,14 +96,13 @@ function drawBreathingCircle(radius, color, opacity) {
     }
     endShape(CLOSE);
 
-    // create radial gradient for the circle with opacity
-    let circleGradient = drawingContext.createRadialGradient(
-        width / 2, height / 2, 0,
-        width / 2, height / 2, radius
-    );
-    let rgbaColor = color + hex(floor(opacity), 2);
-    circleGradient.addColorStop(0, blue + '00');
-    circleGradient.addColorStop(1, rgbaColor);
-    drawingContext.fillStyle = circleGradient;
     drawingContext.fill();
+}
+
+function hex(value, length) {
+    return ('0'.repeat(length) + value.toString(16)).slice(-length).toUpperCase();
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
