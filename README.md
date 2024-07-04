@@ -21,4 +21,4 @@
 *Different Trees using 2D L-Systems*
 
 ### [EXAM | Breathing](https://jfladas.github.io/matbf/exam/)
-*pulsating circles for mindful breathing*
+*Pulsating Circles for Mindful Breathing*
