@@ -8,28 +8,34 @@
     color: white;
     scrollbar-color: rgba(255, 255, 255, 0.3) black;
 }
+
 ::selection {
     background-color: pink;
 }
+
 body {
     background-color: black;
     margin: 50px 60px;
     overflow-x: hidden;
 }
+
 h1 {
     font-size: 40px;
     margin: 0;
 }
+
 h2 {
     color: pink;
     margin-top: 50px;
     font-size: 22px;
     font-weight: 300;
 }
+
 p {
     font-size: 16px;
     text-wrap: nowrap;
 }
+
 span {
     color: rgba(255, 255, 255, 0.3);
     display: none;
@@ -38,24 +44,29 @@ span {
 a {
     text-decoration: none;
     text-wrap: nowrap;
+    display: block;
+    transition: transform 0.3s;
 }
+
 a:hover {
     h2 {
         color: rgb(255, 123, 145);
-        font-size: 25px;
         font-weight: bold;
     }
-    p {
-        font-size: 18px;
-    }
+
     span {
         display: initial;
     }
+
     em {
         font-style: normal;
     }
+
+    transform: scale(1.1) translate(30px, 0);
 }
-a:visited, a:active {
+
+a:visited,
+a:active {
     .link {
         color: rgba(232, 125, 180, 0.833);
     }
@@ -66,19 +77,27 @@ a:visited, a:active {
         margin: 40px 20px;
         max-width: calc(100vw - 40px);
     }
+
     h1 {
         font-size: 30px;
         max-width: calc(100vw - 40px);
     }
+
     h2 {
         margin-top: 30px;
     }
+
     p {
         font-size: 15px;
         text-wrap: wrap;
         line-height: 1.5;
     }
+
     span {
         display: initial;
+    }
+
+    a {
+        height: fit-content;
     }
 }
