@@ -4,13 +4,18 @@
 }
 
 * {
-    font-family: "MingLiU";
+    font-family: "Fraunces", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+        "SOFT" 0,
+        "WONK" 1;
     color: white;
     scrollbar-color: rgba(255, 255, 255, 0.3) black;
 }
 
 ::selection {
-    background-color: pink;
+    background-color: rgb(255, 123, 145);
 }
 
 body {
@@ -28,17 +33,23 @@ h2 {
     color: pink;
     margin-top: 50px;
     font-size: 22px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 p {
     font-size: 16px;
+    font-weight: 200;
     text-wrap: nowrap;
 }
 
+em {
+    font-style: italic;
+}
+
 span {
-    color: rgba(255, 255, 255, 0.3);
+    color: #555;
     display: none;
+    font-weight: 400;
 }
 
 a {
@@ -50,8 +61,8 @@ a {
 
 a:hover {
     h2 {
-        color: rgb(255, 123, 145);
-        font-weight: bold;
+        color: #ff7b91;
+        font-weight: 700;
     }
 
     span {
@@ -63,13 +74,6 @@ a:hover {
     }
 
     transform: scale(1.1) translate(30px, 0);
-}
-
-a:visited,
-a:active {
-    .link {
-        color: rgba(232, 125, 180, 0.833);
-    }
 }
 
 @media (max-width: 600px) {
@@ -85,6 +89,8 @@ a:active {
 
     h2 {
         margin-top: 30px;
+        margin-bottom: -10px;
+        font-size: 18px;
     }
 
     p {
@@ -95,6 +101,7 @@ a:active {
 
     span {
         display: initial;
+        font-style: italic;
     }
 
     a {
