@@ -1,24 +1,24 @@
 # Beautiful Mathematics
 *Module MATBF DI FS24*
-## [» Main Page](https://jfladas.github.io/matbf/)
+## [» Main Page](https://matbf.jfladas.com/)
 
-### [W1 | Spiral](https://jfladas.github.io/matbf/w1/)
+### [W1 | Spiral](https://matbf.jfladas.com/w1/)
 *Spiral of circles increasing in size made by implementing Bresenham Midpoint Circle Algorithm*
 
-### [W2 | 3D Mesh](https://jfladas.github.io/matbf/w2/)
+### [W2 | 3D Mesh](https://matbf.jfladas.com/w2/)
 *Attempt at a 3D snail shape using WebGL*
 
-### [W3 | Matrix](https://jfladas.github.io/matbf/w3/)
+### [W3 | Matrix](https://matbf.jfladas.com/w3/)
 *Markov Chain with Japanese Hiragana*
 
-### [W4 | Life](https://jfladas.github.io/matbf/w4/)
+### [W4 | Life](https://matbf.jfladas.com/w4/)
 *Interactive Conway's Game of Life with more States/Colors*
 
-### [W5 | Mountains](https://jfladas.github.io/matbf/w5/)
+### [W5 | Mountains](https://matbf.jfladas.com/w5/)
 *Layered mountain range made with 2D Fractal Noise and Smoothstep-Interpolation*
 
-### [W6 | Trees](https://jfladas.github.io/matbf/w6/)
+### [W6 | Trees](https://matbf.jfladas.com/w6/)
 *Different Trees using 2D L-Systems*
 
-### [EXAM | Breathing](https://jfladas.github.io/matbf/exam/)
+### [EXAM | Breathing](https://matbf.jfladas.com/exam/)
 *Pulsating Circles for Mindful Breathing*
